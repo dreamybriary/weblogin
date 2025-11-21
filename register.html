@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+        .container {
+            width: 400px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+        }
+        h1 {
+            text-align: center;
+            font-family: "Times New Roman";
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+        label {
+            margin-top: 10px;
+            display: block;
+            font-size: 14px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .btn {
+            width: 48%;
+            padding: 10px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .register-btn {
+            background-color: #28a745;
+            color: white;
+        }
+        .return-btn {
+            background-color: #6c757d;
+            color: white;
+        }
+        .btn-group {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>REGISTER</h1>
+
+    <form id="registerForm" onsubmit="return validateForm()">
+        <label>Username</label>
+        <input type="text" id="username">
+
+        <label>Email</label>
+        <input type="email" id="email">
+
+        <label>Password</label>
+        <input type="password" id="password">
+
+        <label>Confirm Password</label>
+        <input type="password" id="confirm">
+
+        <div class="btn-group">
+            <button type="button" class="btn return-btn" onclick="goBack()">Return</button>
+            <button type="submit" class="btn register-btn">Register</button>
+        </div>
+    </form>
+
+</div>
+
+<script>
+    function validateForm() {
+        let username = document.getElementById("username").value.trim();
+        let email = document.getElementById("email").value.trim();
+        let password = document.getElementById("password").value;
+        let confirm = document.getElementById("confirm").value;
+
+        if (!username || !email || !password || !confirm) {
+            alert("⚠ Please fill all fields!");
+            return false;
+        }
+        if (password !== confirm) {
+            alert("❌ Passwords do not match!");
+            return false;
+        }
+
+        alert("✅ Registered successfully! (Backend needed)");
+        return false; // Prevents actual form submission
+    }
+
+    function goBack() {
+        alert("Return button clicked (navigate to login page).");
+    }
+</script>
+
+</body>
+</html>
